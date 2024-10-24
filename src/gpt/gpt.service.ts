@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { spellingCheckerUseCase } from './use-cases';
-import { SpellingDto } from './dtos';
+import { prosConsDiscusserUseCase, spellingCheckerUseCase } from './use-cases';
+import { ProsConsDiscusserDto, SpellingDto } from './dtos';
 import OpenAI from 'openai';
 
 
@@ -14,5 +14,11 @@ export class GptService {
 
   async spellingChecker(spellingDto: SpellingDto){
     return await spellingCheckerUseCase(this.openai, {prompt: spellingDto.prompt}); ;
+  }
+
+
+
+  async prosConsDicusser(prosConsDiscusserDto: ProsConsDiscusserDto){
+    return await prosConsDiscusserUseCase(this.openai, {prompt: prosConsDiscusserDto.prompt});
   }
 }

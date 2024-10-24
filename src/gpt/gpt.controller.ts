@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { GptService } from './gpt.service';
-import { SpellingDto } from './dtos';
+import { ProsConsDiscusserDto, SpellingDto } from './dtos';
 
 
 @Controller('gpt')
@@ -10,6 +10,12 @@ export class GptController {
   @Post('spelling-checker')
   spellingChecker(@Body() spellingDto: SpellingDto) {
     return this.gptService.spellingChecker(spellingDto);
+  }
+
+
+  @Post('pros-cons-discusser')
+  prosConsDiscusser(@Body() prosConsDiscusserDto: ProsConsDiscusserDto){
+    return this.gptService.prosConsDicusser(prosConsDiscusserDto);
   }
  
   
