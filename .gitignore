@@ -42,6 +42,11 @@ lerna-debug.log*
 .env.production.local
 .env.local
 
+# Serverless directories
+/generated/*
+!/generated/.gitkeep
+
+
 # temp directory
 .temp
 .tmp
