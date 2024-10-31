@@ -16,6 +16,7 @@ import {
 } from '@nestjs/common';
 import { GptService } from './gpt.service';
 import {
+  ImageGenerationDto,
   ProsConsDiscusserDto,
   SpellingDto,
   TextToAudioDto,
@@ -114,5 +115,11 @@ export class GptController {
     file: Express.Multer.File,
   ) {
     return this.gptService.audioToTextService(file);
+  }
+
+
+  @Post('image-generation')
+  async imageGenerationController(@Body() imageGenerationDto: ImageGenerationDto){
+    return this.gptService.imageGenerationService(imageGenerationDto);
   }
 }
