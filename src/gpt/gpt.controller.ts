@@ -117,9 +117,20 @@ export class GptController {
     return this.gptService.audioToTextService(file);
   }
 
-
   @Post('image-generation')
-  async imageGenerationController(@Body() imageGenerationDto: ImageGenerationDto){
+  async imageGenerationController(
+    @Body() imageGenerationDto: ImageGenerationDto,
+  ) {
     return this.gptService.imageGenerationService(imageGenerationDto);
+  }
+
+  @Get('image-generation/:fileId')
+  async getUniqueImageGetter(
+    @Res() res: Response,
+    @Param('fileId') fileId: string,
+  ) {
+    const filePath = this.gptService.getUniqueImageService(fileId);
+    res.status(HttpStatus.OK);
+    res.sendFile(filePath);
   }
 }

@@ -1,3 +1,5 @@
+import * as fs from 'fs';
+import path from 'path'
 import OpenAI from 'openai';
 import { downloadImageAsPng } from 'src/helpers/download-image-as-png';
 
@@ -24,11 +26,11 @@ export const imageGenerationUseCase = async (
   });
 
   //TODO: Guardar la imagen en FS
-  await downloadImageAsPng(response.data[0].url);
+  const url = await downloadImageAsPng(response.data[0].url);
 
   return {
-    url: response.data[0].url,
-    localPath: '',
+    url: url,
+    openAIUrl: response.data[0].url,
     revised_prompt: response.data[0].revised_prompt,
   };
 };
