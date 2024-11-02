@@ -40,8 +40,8 @@ export const imageGenerationUseCase = async (
   }
 
   // originalImage = http://localhost:3000/gpt/image-generation/1234
-  const pngImagePath = await downloadImageAsPng(originalImage);
-  const maskPath = await downloadBase64ImageAsPng(maskImage);
+  const pngImagePath = await downloadImageAsPng(originalImage, true);
+  const maskPath = await downloadBase64ImageAsPng(maskImage, true);
 
   const response = await openai.images.edit({
     model: 'dall-e-3',
