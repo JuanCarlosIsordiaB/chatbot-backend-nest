@@ -4,6 +4,7 @@ import * as path from 'path';
 import {
   audioToTextUseCase,
   imageGenerationUseCase,
+  imageVariationUseCase,
   prosConsDiscusserStreamUseCase,
   prosConsDiscusserUseCase,
   spellingCheckerUseCase,
@@ -12,6 +13,7 @@ import {
 } from './use-cases';
 import {
   ImageGenerationDto,
+  ImageVariationDto,
   ProsConsDiscusserDto,
   SpellingDto,
   TextToAudioDto,
@@ -80,5 +82,9 @@ export class GptService {
     console.log({ filePath });
 
     return filePath;
+  }
+
+  async imageGenerationVariationService(imageVariationDto: ImageVariationDto) {
+    return imageVariationUseCase(this.openai, imageVariationDto);
   }
 }
