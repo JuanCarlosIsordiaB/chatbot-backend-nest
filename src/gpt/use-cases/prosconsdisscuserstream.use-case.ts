@@ -25,7 +25,7 @@ export const prosConsDiscusserStreamUseCase = async (
         content: prompt,
       },
     ],
-    model: 'gpt-3.5-turbo-1106',
+    model: 'gpt-3.5-turbo',
     temperature: 0.3,
     max_tokens: 150,
   });
